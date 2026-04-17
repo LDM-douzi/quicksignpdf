@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -67,6 +67,16 @@
         align-items: center;
         margin-bottom: 24px;
       }
+      .meta {
+        margin-top: 16px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #f8fafc;
+      }
+      .meta strong {
+        color: var(--text);
+      }
     </style>
   </head>
   <body>
@@ -78,40 +88,137 @@
         <p class="eyebrow">QuickSignPDF</p>
         <h1>Privacy Policy</h1>
         <p>
-          QuickSignPDF is designed to process documents in the browser. Uploaded PDFs and edits are
-          intended to stay on the user's device unless the product later introduces cloud features.
+          QuickSignPDF is intended to let people fill, sign, annotate, and export PDFs directly in
+          the browser. The current version is designed to avoid server-side document processing by
+          default. This page explains what personal data may still be processed when someone visits
+          or uses the site.
+        </p>
+
+        <div class="meta">
+          <p><strong>Operator:</strong> [ADD YOUR FULL NAME OR LEGAL ENTITY NAME]</p>
+          <p><strong>Contact email:</strong> [ADD YOUR PRIVACY OR SUPPORT EMAIL ADDRESS]</p>
+          <p><strong>Address:</strong> [ADD A BUSINESS OR CONTACT ADDRESS IF YOU WANT OR IF LEGALLY REQUIRED]</p>
+          <p><strong>Last updated:</strong> 17 April 2026</p>
+        </div>
+
+        <h2>Who this policy applies to</h2>
+        <p>
+          This policy applies to visitors to the QuickSignPDF website and users of the browser-based
+          editor. It is intended for a free hobby project operated from Belgium and directed at users
+          in the European Union and elsewhere.
         </p>
 
         <h2>How the editor works</h2>
         <p>
-          The editor runs client-side in the browser. You can use it without creating an account,
-          and the current version does not upload your documents to a QuickSignPDF server for
-          editing.
+          The editor runs client-side in the browser. The app does not require an account. In the
+          current version, PDFs that users open in the editor are meant to remain on their own
+          device unless the user chooses to export or share a file themselves.
         </p>
 
-        <h2>Information we may process</h2>
+        <h2>Personal data the operator does not intentionally request</h2>
+        <p>
+          QuickSignPDF does not intentionally require users to submit accounts, names, payment
+          details, or uploaded documents to the operator in order to use the core editor features.
+          The app is designed so that PDF editing happens locally in the browser.
+        </p>
+
+        <h2>Personal data that may still be processed</h2>
+        <p>
+          Even though the editor is designed to work locally, some personal data may still be
+          processed through normal website operation. This can include:
+        </p>
         <ul>
-          <li>PDF files you choose to open in the browser.</li>
-          <li>Edits, signatures, images, and annotations you add while using the editor.</li>
-          <li>Basic hosting analytics or server logs, depending on the hosting platform you use.</li>
+          <li>Technical request data such as IP address, browser information, timestamps, and network logs collected by the hosting or delivery provider.</li>
+          <li>Locally stored browser data if the user enables autosave, such as the current PDF session, annotations, and editor preferences.</li>
+          <li>Any personal data a user includes inside a PDF, typed text, signature, note, or image stored locally in their own browser.</li>
         </ul>
 
-        <h2>Local storage</h2>
+        <h2>Browser storage and autosave</h2>
         <p>
-          If local autosave is enabled, the app may store your active session locally in the
-          browser so you can recover work after a refresh. You can turn autosave off in the editor,
-          and clearing browser storage may remove any saved session.
+          QuickSignPDF may store data in the user’s browser, including IndexedDB or local storage,
+          to preserve editor preferences and optionally restore an unfinished session after refresh.
+          Autosave can be turned off in the editor. If autosave is disabled, the saved local session
+          is cleared by the app. Clearing browser storage can also remove saved sessions.
         </p>
 
-        <h2>Third-party hosting</h2>
+        <h2>Cookies and similar technologies</h2>
         <p>
-          If this site is hosted on platforms such as Vercel, Netlify, or Cloudflare, those
-          providers may collect technical request data under their own policies.
+          QuickSignPDF does not intentionally use advertising cookies, tracking cookies, or user
+          profiling technologies in the current version. The app may use browser storage that is
+          functionally necessary to remember the autosave preference or a local editing session.
+          Hosting providers or infrastructure services may still use strictly necessary technical
+          mechanisms for security, caching, or delivery.
+        </p>
+
+        <h2>Purposes and legal bases</h2>
+        <p>
+          To the extent personal data is processed by or for the operator, the main purposes are:
+        </p>
+        <ul>
+          <li>making the website available to visitors;</li>
+          <li>protecting the site against abuse, misuse, and technical attacks;</li>
+          <li>remembering a user’s local editor preference or locally saved session when that feature is enabled.</li>
+        </ul>
+        <p>
+          The relevant legal bases may include the operator’s legitimate interests in providing and
+          securing the site, and where applicable, the user’s request to use a functional storage
+          feature such as autosave.
+        </p>
+
+        <h2>Third-party hosting and infrastructure</h2>
+        <p>
+          If the site is hosted through providers such as Vercel, Netlify, Cloudflare, or similar
+          infrastructure providers, those providers may process technical request data under their
+          own policies and retention practices. Users should also review the applicable privacy
+          information of those providers where relevant.
+        </p>
+
+        <h2>Data sharing</h2>
+        <p>
+          The operator does not intend to sell personal data or knowingly share user PDF contents
+          for advertising. Technical data may nevertheless be processed by hosting, CDN, DNS, or
+          other infrastructure providers involved in serving the site.
+        </p>
+
+        <h2>Retention</h2>
+        <p>
+          Local session data remains in the user’s browser until it is cleared by the app, removed
+          by the user, or deleted by the browser. Technical server or infrastructure logs, if any,
+          are retained according to the relevant provider’s configuration and policies.
+        </p>
+
+        <h2>International transfers</h2>
+        <p>
+          If the hosting or infrastructure provider uses systems outside Belgium or the European
+          Economic Area, personal data such as technical request logs may be processed outside the
+          EEA subject to the provider’s own safeguards and legal mechanisms.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          To the extent the operator processes personal data as a controller, users in the EU may
+          have rights under applicable data protection law, including rights of access,
+          rectification, erasure, restriction, objection, and complaint to a supervisory authority.
+          In Belgium, the supervisory authority is the Belgian Data Protection Authority.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          QuickSignPDF is not specifically directed to children. Users should not rely on the site
+          to store sensitive information for minors or any critical records without their own backup
+          and legal review.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          This policy may be updated from time to time to reflect changes to the website, hosting
+          setup, or legal obligations. The version published on this page is the version that
+          applies at the time of use.
         </p>
 
         <h2>Contact</h2>
         <p>
-          Add your real support or privacy contact details here before public launch.
+          Privacy questions or legal requests can be sent to: [ADD YOUR PRIVACY CONTACT EMAIL].
         </p>
       </section>
     </main>
