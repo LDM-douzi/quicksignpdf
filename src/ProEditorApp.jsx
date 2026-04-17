@@ -3,7 +3,13 @@ import * as pdfjsLib from "pdfjs-dist";
 import { PDFDocument } from "pdf-lib";
 import workerUrl from "pdfjs-dist/build/pdf.worker.mjs?url";
 import SignaturePad from "./SignaturePad";
-import { clearActiveSession, loadActiveSession, saveActiveSession } from "./sessionStore";
+import {
+  clearActiveSession,
+  loadActiveSession,
+  loadAutosavePreference,
+  saveActiveSession,
+  saveAutosavePreference,
+} from "./sessionStore";
 import {
   DEFAULT_HIGHLIGHT_PRESET,
   DEFAULT_NOTE_PRESET,
@@ -48,6 +54,18 @@ function formatAutosaveLabel(timestamp) {
     day: "2-digit",
     month: "short",
   }).format(new Date(timestamp));
+}
+
+function autosaveSummary(isRestoring, autosaveEnabled, timestamp) {
+  if (!autosaveEnabled) {
+    return "Autosave off";
+  }
+
+  if (isRestoring) {
+    return "Restoring autosave...";
+  }
+
+  return `Autosaved: ${formatAutosaveLabel(timestamp)}`;
 }
 
 function snippetForQuery(text, query) {
@@ -245,6 +263,7 @@ function ProEditorApp() {
   const [isExporting, setIsExporting] = useState(false);
   const [lastSavedAt, setLastSavedAt] = useState("");
   const [sessionReady, setSessionReady] = useState(false);
+  const [autosaveEnabled, setAutosaveEnabled] = useState(true);
   const [zoom, setZoom] = useState(1.05);
 
   const [textPreset, setTextPreset] = useState(DEFAULT_TEXT_PRESET);
@@ -327,6 +346,13 @@ function ProEditorApp() {
 
     async function restoreSession() {
       try {
+        const nextAutosavePreference = loadAutosavePreference();
+        setAutosaveEnabled(nextAutosavePreference);
+
+        if (!nextAutosavePreference) {
+          return;
+        }
+
         const session = await loadActiveSession();
         if (!session || cancelled) {
           return;
@@ -410,7 +436,7 @@ function ProEditorApp() {
   }, [pdfDoc, pages, zoom]);
 
   useEffect(() => {
-    if (!sessionReady || !pdfBytes || !fileName) {
+    if (!sessionReady || !autosaveEnabled || !pdfBytes || !fileName) {
       return undefined;
     }
 
@@ -444,6 +470,7 @@ function ProEditorApp() {
   }, [
     activePage,
     annotations,
+    autosaveEnabled,
     fileName,
     highlightPreset,
     imageDraft,
@@ -460,6 +487,15 @@ function ProEditorApp() {
     tool,
     zoom,
   ]);
+
+  useEffect(() => {
+    if (!sessionReady || autosaveEnabled) {
+      return;
+    }
+
+    setLastSavedAt("");
+    clearActiveSession().catch(console.error);
+  }, [autosaveEnabled, sessionReady]);
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -621,6 +657,23 @@ function ProEditorApp() {
     setStatus("Workspace cleared.");
     setLastSavedAt("");
     clearActiveSession().catch(console.error);
+  }
+
+  function toggleAutosave() {
+    setAutosaveEnabled((current) => {
+      const nextValue = !current;
+      saveAutosavePreference(nextValue);
+
+      if (!nextValue) {
+        setLastSavedAt("");
+        clearActiveSession().catch(console.error);
+        setStatus("Autosave turned off. This PDF now stays only in the current tab unless you download it.");
+      } else {
+        setStatus("Autosave turned on. Your current PDF and edits will be stored locally in this browser.");
+      }
+
+      return nextValue;
+    });
   }
 
   function getHitAnnotation(pageNumber, x, y) {
@@ -1055,7 +1108,11 @@ function ProEditorApp() {
       setStatus("Downloaded your edited PDF.");
     } catch (error) {
       console.error(error);
-      setStatus("Export failed. Your work is still autosaved locally.");
+      setStatus(
+        autosaveEnabled
+          ? "Export failed. Your work is still autosaved locally in this browser."
+          : "Export failed. Your work is still open in the current tab.",
+      );
     } finally {
       setIsExporting(false);
     }
@@ -1727,7 +1784,7 @@ function ProEditorApp() {
         <div className="brand">
           <div className="brand-badge">PDF</div>
           <div>
-            <h1>Files Editor</h1>
+            <h1>QuickSignPDF</h1>
             <span>{fileName || "No document selected"}</span>
           </div>
         </div>
@@ -1770,9 +1827,20 @@ function ProEditorApp() {
       </section>
 
       <section className="subheader-row">
-        <span>{status}</span>
+        <div className="subheader-status">
+          <span>{status}</span>
+          <div className="privacy-pill-row">
+            <span className="privacy-pill">Runs in your browser</span>
+            <span className={`privacy-pill ${autosaveEnabled ? "" : "is-neutral"}`}>
+              {autosaveEnabled ? "Local autosave on" : "Local autosave off"}
+            </span>
+          </div>
+        </div>
         <div className="subheader-actions">
-          <span>{isRestoring ? "Restoring autosave..." : `Autosaved: ${formatAutosaveLabel(lastSavedAt)}`}</span>
+          <span>{autosaveSummary(isRestoring, autosaveEnabled, lastSavedAt)}</span>
+          <button type="button" className="mini-button" onClick={toggleAutosave}>
+            {autosaveEnabled ? "Turn autosave off" : "Turn autosave on"}
+          </button>
           <button type="button" className="mini-button" onClick={() => setZoom((value) => clamp(value - 0.1, 0.6, 2))}>
             -
           </button>
@@ -1825,6 +1893,9 @@ function ProEditorApp() {
               <p className="landing-lead">
                 Upload a PDF to add signatures, fill forms, type text, draw, highlight, redact,
                 and download the edited document without installing anything.
+              </p>
+              <p className="landing-privacy-note">
+                Files are processed in your browser. Local autosave is optional and can be turned off.
               </p>
 
               <div className="landing-actions">

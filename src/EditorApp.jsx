@@ -655,7 +655,7 @@ function EditorApp() {
 
       <header className="topbar">
         <div className="brand-lockup">
-          <p className="brand-kicker">Papertrail Pro</p>
+          <p className="brand-kicker">QuickSignPDF</p>
           <h1>Professional PDF editor</h1>
           <span>{fileName || "No document open"}</span>
         </div>

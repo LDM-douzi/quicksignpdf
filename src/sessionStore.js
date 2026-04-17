@@ -1,6 +1,7 @@
-const DB_NAME = "papertrail-pdf-editor";
+const DB_NAME = "quicksignpdf-editor";
 const STORE_NAME = "sessions";
 const ACTIVE_SESSION_ID = "active-session";
+const AUTOSAVE_PREFERENCE_KEY = "quicksignpdf-autosave-enabled";
 
 function openDb() {
   return new Promise((resolve, reject) => {
@@ -81,4 +82,30 @@ export function clearActiveSession() {
   return withStore("readwrite", (store) => {
     store.delete(ACTIVE_SESSION_ID);
   });
+}
+
+export function loadAutosavePreference() {
+  if (typeof window === "undefined") {
+    return true;
+  }
+
+  try {
+    const value = window.localStorage.getItem(AUTOSAVE_PREFERENCE_KEY);
+    return value === null ? true : value === "true";
+  } catch (error) {
+    console.error(error);
+    return true;
+  }
+}
+
+export function saveAutosavePreference(enabled) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(AUTOSAVE_PREFERENCE_KEY, String(Boolean(enabled)));
+  } catch (error) {
+    console.error(error);
+  }
 }

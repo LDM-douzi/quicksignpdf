@@ -261,6 +261,38 @@ button:disabled {
   font-size: 0.92rem;
 }
 
+.subheader-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.privacy-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.privacy-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(92, 132, 241, 0.18);
+  background: rgba(92, 132, 241, 0.08);
+  color: #3155b7;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.privacy-pill.is-neutral {
+  border-color: var(--line);
+  background: #f8fafc;
+  color: #475569;
+}
+
 .mini-button {
   padding: 6px 10px;
 }
@@ -371,6 +403,12 @@ button:disabled {
   margin-top: 16px;
   font-size: 1.08rem;
   line-height: 1.7;
+}
+
+.landing-privacy-note {
+  margin-top: 12px;
+  color: #475569;
+  font-size: 0.96rem;
 }
 
 .landing-actions {

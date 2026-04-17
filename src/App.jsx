@@ -558,7 +558,7 @@ function App() {
     <div className="app-shell">
       <aside className="control-rail">
         <div className="hero-panel">
-          <p className="eyebrow">Papertrail PDF Editor</p>
+          <p className="eyebrow">QuickSignPDF</p>
           <h1>Fill forms, sign them, and send them back in minutes.</h1>
           <p className="hero-copy">
             Upload any downloaded PDF, place text where the form needs it, draw marks by hand,
