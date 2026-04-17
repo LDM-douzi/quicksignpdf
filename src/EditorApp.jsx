@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import { PDFDocument } from "pdf-lib";
 import workerUrl from "pdfjs-dist/build/pdf.worker.mjs?url";
@@ -338,7 +338,7 @@ function EditorApp() {
     }
 
     if (toolId === TOOLS.check) {
-      const annotation = createTextAnnotation(pageNumber, x, y, "✓", "#16a34a", 0.04);
+      const annotation = createTextAnnotation(pageNumber, x, y, "âœ“", "#16a34a", 0.04);
       applyAnnotations((current) => [...current, annotation]);
       setSelectedId(annotation.id);
       return;
@@ -655,7 +655,7 @@ function EditorApp() {
 
       <header className="topbar">
         <div className="brand-lockup">
-          <p className="brand-kicker">QuickSignPDF</p>
+          <p className="brand-kicker">FreePDF No Bullshit</p>
           <h1>Professional PDF editor</h1>
           <span>{fileName || "No document open"}</span>
         </div>
@@ -1073,3 +1073,4 @@ function EditorApp() {
 }
 
 export default EditorApp;
+

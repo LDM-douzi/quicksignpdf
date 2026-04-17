@@ -1,7 +1,7 @@
-const DB_NAME = "quicksignpdf-editor";
+﻿const DB_NAME = "freepdf-nobullshit-editor";
 const STORE_NAME = "sessions";
 const ACTIVE_SESSION_ID = "active-session";
-const AUTOSAVE_PREFERENCE_KEY = "quicksignpdf-autosave-enabled";
+const AUTOSAVE_PREFERENCE_KEY = "freepdf-nobullshit-autosave-enabled";
 
 function openDb() {
   return new Promise((resolve, reject) => {
@@ -109,3 +109,5 @@ export function saveAutosavePreference(enabled) {
     console.error(error);
   }
 }
+
+

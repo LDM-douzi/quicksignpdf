@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import { PDFDocument } from "pdf-lib";
 import workerUrl from "pdfjs-dist/build/pdf.worker.mjs?url";
@@ -558,7 +558,7 @@ function App() {
     <div className="app-shell">
       <aside className="control-rail">
         <div className="hero-panel">
-          <p className="eyebrow">QuickSignPDF</p>
+          <p className="eyebrow">FreePDF No Bullshit</p>
           <h1>Fill forms, sign them, and send them back in minutes.</h1>
           <p className="hero-copy">
             Upload any downloaded PDF, place text where the form needs it, draw marks by hand,
@@ -743,3 +743,4 @@ function App() {
 }
 
 export default App;
+

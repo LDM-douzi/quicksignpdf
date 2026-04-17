@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import { PDFDocument } from "pdf-lib";
 import workerUrl from "pdfjs-dist/build/pdf.worker.mjs?url";
@@ -1784,7 +1784,7 @@ function ProEditorApp() {
         <div className="brand">
           <div className="brand-badge">PDF</div>
           <div>
-            <h1>QuickSignPDF</h1>
+            <h1>FreePDF No Bullshit</h1>
             <span>{fileName || "No document selected"}</span>
           </div>
         </div>
@@ -2154,3 +2154,4 @@ function ProEditorApp() {
 }
 
 export default ProEditorApp;
+

@@ -1,4 +1,4 @@
-﻿# QuickSignPDF
+﻿# FreePDF No Bullshit
 
 A browser-based PDF editor focused on the same day-to-day workflow as mainstream online PDF tools.
 
@@ -32,7 +32,7 @@ This project is a static Vite app, so it can be hosted for free on services like
 3. Keep the default Vite settings.
 4. Make sure the build command is `npm run build`.
 5. Make sure the output directory is `dist`.
-6. Set the environment variable `SITE_URL` to your final public domain, for example `https://yourdomain.com`.
+6. Set the environment variable `SITE_URL` to your final public domain, for example `https://freepdf-nobullshit.com`.
 7. Click deploy.
 
 After that, each push to GitHub can automatically update the live site.
@@ -59,3 +59,4 @@ This app runs fully in the browser. Uploaded PDFs and edits stay on the user's d
 - This app is focused on form filling, markup, signing, search, and annotations, not rewriting the original printed PDF text.
 - Exported edits are flattened into the new PDF so they stay visible when shared.
 - The current feature set is inspired by mainstream PDF editors, but it is still a lightweight local implementation rather than a full Acrobat replacement.
+
