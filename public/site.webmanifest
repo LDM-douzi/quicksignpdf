@@ -1,0 +1,9 @@
+{
+  "name": "Papertrail PDF Editor",
+  "short_name": "Papertrail",
+  "description": "Free browser-based PDF editor for filling forms, signing PDFs, adding text, and exporting edited documents.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f6",
+  "theme_color": "#5c84f1"
+}

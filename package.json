@@ -1,0 +1,24 @@
+{
+  "name": "02.-pdf-editor",
+  "version": "1.0.0",
+  "description": "Local PDF fill-and-sign editor",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/postbuild-seo.mjs",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.6.205",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "vite": "^8.0.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1"
+  }
+}
